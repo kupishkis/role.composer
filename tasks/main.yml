@@ -1,8 +1,9 @@
 ---
 - name: obtain and install composer
   sudo: true
-  shell: >
-      if [ command -v composer > /dev/null -ne 0 ]; then
+  shell: |
+      command -v composer > /dev/null
+      if [ $? -ne 0 ]; then
           curl -sS https://getcomposer.org/installer | php
           mv composer.phar /usr/local/bin/composer
       fi
